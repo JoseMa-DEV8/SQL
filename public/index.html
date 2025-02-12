@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Alumnos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        async function cargarAlumnos(cursoId) {
+            if (!cursoId) {
+                alert("Por favor, introduce un ID de curso.");
+                return;
+            }
+            try {
+                const response = await fetch(`/cursos/${cursoId}/alumnos`);
+                const alumnos = await response.json();
+
+                const lista = document.getElementById('lista-alumnos');
+                lista.innerHTML = '';
+                if (alumnos.length === 0) {
+                    lista.innerHTML = '<li>No hay alumnos matriculados en este curso.</li>';
+                    return;
+                }
+
+                alumnos.forEach(alumno => {
+                    const item = document.createElement('li');
+                    item.innerHTML = `
+                        ${alumno.nombre} (${alumno.estado}) 
+                        <button onclick="eliminarAlumno(${alumno.id}, ${cursoId})">Eliminar</button>
+                    `;
+                    lista.appendChild(item);
+                });
+            } catch (error) {
+                console.error('Error al cargar alumnos:', error);
+            }
+        }
+        async function eliminarAlumno(id, cursoId) {
+            if (confirm('¿Estás seguro de que quieres eliminar este alumno?')) {
+                try {
+                    await fetch(`/alumnos/${id}`, { method: 'DELETE' });
+                    alert('Alumno eliminado correctamente');
+                    cargarAlumnos(cursoId); // Recargar la lista sin recargar la página
+                } catch (error) {
+                    console.error('Error al eliminar el alumno:', error);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="./fondo/medac.png">
+    <h1 id="titulo">LISTADO DE ALUMNOS</h1>
+
+    <label for="cursoId">ID del Curso➤</label>
+    <input type="number" id="cursoId" placeholder="Introduce el ID del curso">
+    <button onclick="cargarAlumnos(document.getElementById('cursoId').value)">Cargar Alumnos</button>
+
+    <ul id="lista-alumnos"></ul>
+    <div id="menu-navegacion">
+        <button onclick="window.location.href='grafico.html'">Ver Gráficos</button>
+        <button onclick="window.location.href='editar_curso.html'">Editar Curso</button>
+    </div>
+</body>
+</html>

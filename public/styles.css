@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+#titulo {
+    color: white;
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('./fondo/malaga.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.moving-image {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background: url('./fondo/medac.png') no-repeat center center;
+    background-size: cover;
+    animation: floatImage 10s linear infinite alternate;
+    z-index: 10; 
+    display: block;
+}
+
+@keyframes floatImage {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(50vw, 20vh); }
+    100% { transform: translate(90vw, 0); }
+}
+
+h1 {
+    color: #ff00ff;
+    text-align: center;
+    font-size: 2.5em;
+    text-shadow: 3px 3px 6px #000000;
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+button {
+    background: linear-gradient(to right, #005fa3, #003f7f);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1703ee;
+}
+
+#lista-alumnos {
+    width: 95%;
+    max-width: 600px;
+    min-height: 400px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    color: white;
+    text-align: center;
+    margin: 20px auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    list-style: none;
+    backdrop-filter: blur(10px);
+}
+
+li {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+li:hover {
+    background-color: #e0e0e0;
+}
+
+li button {
+    background-color: #d9534f;
+    padding: 5px 12px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 30px;
+    transition: background-color 0.3s ease;
+}
+
+li button:hover {
+    background-color: #c9302c;
+}
+
+#menu-navegacion {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+#menu-navegacion button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#menu-navegacion button:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 600px) {
+    #menu-navegacion {
+        flex-direction: column;
+    }
+    input, button {
+        max-width: 90%;
+    }
+    #lista-alumnos {
+        max-width: 90%;
+    }
+}

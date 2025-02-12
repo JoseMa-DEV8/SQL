@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('./fondo/malaga.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+    overflow-y: auto; 
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: #004d99;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+    color: #ffffff;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c23d3d;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #005fa3;
+}
+
+#formularioCurso {
+    background: url('./fondo/medac.png') no-repeat center center fixed;
+    padding: 250px;
+    border-radius: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}

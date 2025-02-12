@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('./fondo/malaga.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+    overflow-y: auto; /
+}
+
+h1 {
+    color: #005fa3;
+}
+
+#menu-navegacion {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#menu-navegacion button {
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#menu-navegacion button:hover {
+    background-color: #005fa3;
+}
+
+#graficoRatios {
+    max-width: 600px;
+    max-height: 600px;
+    margin: 0 auto;
+    display: block; 
+}
+
+#tabla-leyenda table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+#tabla-leyenda th, #tabla-leyenda td {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+}
+
+#tabla-leyenda th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}

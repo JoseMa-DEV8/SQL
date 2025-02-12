@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Curso</title>
+    <link rel="stylesheet" href="editar_curso.css">
+</head>
+<body>
+    <h1>Editar Curso</h1>
+
+    <label for="cursoId">ID del Curso:</label>
+    <input type="number" id="cursoId" placeholder="Introduce el ID del curso">
+    <button onclick="cargarCurso()">Cargar Curso</button>
+
+    <form id="formularioCurso" style="display:none;" onsubmit="actualizarCurso(event)">
+        <label>Nombre:</label><br>
+        <input type="text" id="nombre"><br>
+
+        <label>Descripción:</label><br>
+        <textarea id="descripcion"></textarea><br>
+
+        <label>Nivel:</label><br>
+        <input type="text" id="nivel"><br>
+
+        <label>Lugar:</label><br>
+        <input type="text" id="lugar"><br>
+
+        <label>Fecha de Importación:</label><br>
+        <input type="date" id="fecha_importacion"><br><br>
+
+        <button type="submit">Actualizar Curso</button>
+    </form>
+    <div id="menu-navegacion">
+        <button onclick="window.location.href='index.html'">Inicio</button>
+        <button onclick="window.location.href='grafico.html'">Ver Gráficos</button>
+    </div>
+    <script>
+        async function cargarCurso() {
+            const cursoId = document.getElementById('cursoId').value;
+            const response = await fetch(`/cursos/${cursoId}`);
+            
+            if (response.ok) {
+                const curso = await response.json();
+                document.getElementById('formularioCurso').style.display = 'block';
+                document.getElementById('nombre').value = curso.nombre;
+                document.getElementById('descripcion').value = curso.descripcion;
+                document.getElementById('nivel').value = curso.nivel;
+                document.getElementById('lugar').value = curso.lugar;
+                document.getElementById('fecha_importacion').value = curso.fecha_importacion;
+            } else {
+                alert('Curso no encontrado.');
+            }
+        }
+
+        async function actualizarCurso(event) {
+            event.preventDefault();
+            const cursoId = document.getElementById('cursoId').value;
+            const cursoActualizado = {
+                nombre: document.getElementById('nombre').value,
+                descripcion: document.getElementById('descripcion').value,
+                nivel: document.getElementById('nivel').value,
+                lugar: document.getElementById('lugar').value,
+                fecha_importacion: document.getElementById('fecha_importacion').value
+            };
+
+            const response = await fetch(`/cursos/${cursoId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(cursoActualizado)
+            });
+
+            if (response.ok) {
+                alert('Curso actualizado correctamente');
+            } else {
+                alert('Error al actualizar el curso.');
+            }
+        }
+    </script>
+</body>
+</html>
